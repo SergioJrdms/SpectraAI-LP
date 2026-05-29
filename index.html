@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpectraAI · Prism System — A IA que aprende a sua operação industrial</title>
+  <meta name="description"
+    content="A primeira IA que aprende a sua operação industrial por vídeo. Descobre os comportamentos do seu processo, faz perguntas, e fica mais inteligente a cada vídeo — com sugestões de produtividade Lean." />
+  <meta name="keywords"
+    content="inteligência operacional, aprendizado de processo industrial, visão computacional, produtividade Lean, IA industrial, descoberta de comportamentos, indústria 4.0, análise de processo por vídeo" />
+  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SpectraAI · A IA que aprende a sua operação" />
+  <meta property="og:description"
+    content="Não é monitoramento. É uma inteligência que aprende o seu processo industrial por vídeo — e melhora sozinha a cada vídeo." />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="SpectraAI" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SpectraAI · A IA que aprende a sua operação" />
+  <meta name="twitter:description"
+    content="Não é monitoramento. É uma inteligência que aprende o seu processo industrial por vídeo — e melhora sozinha a cada vídeo." />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "SpectraAI",
+      "url": "https://spectraai.com.br",
+      "email": "contato@spectraai.com.br",
+      "description": "Plataforma de IA que aprende a operação industrial de cada cliente por vídeo, descobrindo comportamentos e gerando ganhos de produtividade.",
+      "sameAs": ["https://www.linkedin.com/company/spectraai"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Prism System by SpectraAI",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "description": "IA que aprende a operação industrial por vídeo: descobre comportamentos, faz perguntas, valida com o cliente e gera sugestões de produtividade Lean.",
+      "offers": { "@type": "Offer", "priceCurrency": "BRL" }
+    }
+  ]
+}
+</script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            ink: '#0B0612',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --kv-ink: #0B0612;
+      --kv-purple-900: #44279C;
+      --kv-purple-700: #5330C0;
+      --kv-purple-500: #683BED;
+      --kv-purple-200: #C5B9F5;
+      --kv-purple-50: #EFEBFC;
+      --kv-text: #374151;
+      --kv-muted: #6B7280;
+      --kv-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --kv-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --kv-bg: #FFFFFF;
+      --kv-surface: #FFFFFF;
+      --kv-soft: #EFEBFC;
+      --kv-border: rgba(68, 39, 156, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--kv-body);
+      color: var(--kv-text);
+      background: var(--kv-bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .font-display {
+      font-family: var(--kv-display);
+      letter-spacing: -0.022em;
+    }
+
+    .font-body {
+      font-family: var(--kv-body);
+    }
+
+    /* Headlines need tight tracking */
+    h1,
+    h2,
+    h3,
+    .display {
+      letter-spacing: -0.025em;
+    }
+
+    /* Soft purple gradient noise texture for hero */
+    .hero-grad {
+      background:
+        radial-gradient(60% 80% at 85% 0%, rgba(83, 48, 192, 0.16), transparent 60%),
+        radial-gradient(50% 60% at 0% 30%, rgba(68, 39, 156, 0.10), transparent 60%),
+        linear-gradient(180deg, #FFFFFF 0%, #F7F4FE 60%, #EFEBFC 100%);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-d1 {
+      transition-delay: .06s;
+    }
+
+    .reveal-d2 {
+      transition-delay: .12s;
+    }
+
+    .reveal-d3 {
+      transition-delay: .18s;
+    }
+
+    .reveal-d4 {
+      transition-delay: .24s;
+    }
+
+    /* Subtle grid for the hero camera-feed mock */
+    .scanlines {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Bounding box pulse */
+    @keyframes bboxPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(83, 48, 192, 0.55);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(83, 48, 192, 0.0);
+      }
+    }
+
+    .bbox {
+      animation: bboxPulse 2.4s ease-in-out infinite;
+    }
+
+    /* Marquee */
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee-track {
+      animation: marquee 38s linear infinite;
+    }
+
+    /* CTA shimmer */
+    .cta-primary {
+      background: linear-gradient(180deg, var(--kv-purple-700), var(--kv-purple-900));
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 12px 30px -10px rgba(68, 39, 156, 0.55), 0 2px 6px -2px rgba(68, 39, 156, 0.4);
+    }
+
+    .cta-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .cta-primary {
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    /* "Live" pill ping */
+    @keyframes livePing {
+      0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+      }
+
+      70% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    .live-dot {
+      animation: livePing 1.6s ease-out infinite;
+    }
+
+    /* Card hover lift */
+    .lift {
+      transition: transform .25s cubic-bezier(.2, .7, .2, 1), box-shadow .25s cubic-bezier(.2, .7, .2, 1), border-color .25s;
+    }
+
+    .lift:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--kv-purple-200);
+      color: var(--kv-purple-900);
+    }
+
+    /* Hide scrollbar in horiz drags */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      scrollbar-width: none;
+    }
+
+    /* Dark mode tweak */
+    body.kv-dark {
+      --kv-bg: #0B0612;
+      --kv-surface: #15101F;
+      --kv-soft: #0B0612;
+      --kv-text: #E5E1F2;
+      --kv-muted: #9A91B4;
+      --kv-border: rgba(255, 255, 255, 0.06);
+      background: var(--kv-bg);
+      color: var(--kv-text);
+    }
+
+    body.kv-dark .hero-grad {
+      background:
+        radial-gradient(60% 80% at 85% 0%, rgba(83, 48, 192, 0.28), transparent 60%),
+        radial-gradient(50% 60% at 0% 30%, rgba(68, 39, 156, 0.22), transparent 60%),
+        linear-gradient(180deg, #0B0612 0%, #110A1F 60%, #15102A 100%);
+    }
+
+    /* tick animation for KPI numbers */
+    .num-roll {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Hero learning-card entrances */
+    @keyframes kvFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* FAQ chevron */
+    details[open] .faq-chev {
+      transform: rotate(45deg);
+    }
+
+    .faq-chev {
+      transition: transform .25s ease;
+    }
+
+    /* Stage step active glow */
+    .step-active {
+      box-shadow: 0 0 0 2px var(--kv-purple-500), 0 18px 40px -14px rgba(83, 48, 192, 0.55);
+    }
+
+    /* Capability icon container */
+    .cap-icon {
+      background: linear-gradient(135deg, var(--kv-purple-50), #FFFFFF);
+      border: 1px solid var(--kv-border);
+    }
+
+    body.kv-dark .cap-icon {
+      background: linear-gradient(135deg, rgba(83, 48, 192, 0.12), rgba(83, 48, 192, 0.04));
+    }
+
+    /* Link underline */
+    .link-u {
+      position: relative;
+    }
+
+    .link-u::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -2px;
+      height: 1px;
+      background: currentColor;
+      transition: right .25s ease;
+    }
+
+    .link-u:hover::after {
+      right: 0;
+    }
+
+    /* Form */
+    .kv-input {
+      width: 100%;
+      background: var(--kv-surface);
+      border: 1px solid var(--kv-border);
+      border-radius: 12px;
+      padding: 14px 14px;
+      font: inherit;
+      color: var(--kv-text);
+      transition: border-color .15s, box-shadow .15s, background .15s;
+    }
+
+    .kv-input:focus {
+      outline: none;
+      border-color: var(--kv-purple-500);
+      box-shadow: 0 0 0 4px rgba(83, 48, 192, 0.12);
+    }
+
+    .kv-input.invalid {
+      border-color: #DC2626;
+      box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.10);
+    }
+
+    /* Section wrapper */
+    .kv-section {
+      padding: 120px 0;
+    }
+
+    @media (max-width: 768px) {
+      .kv-section {
+        padding: 80px 0;
+      }
+    }
+
+    /* Subtle dotted bg used in step illustrations */
+    .dotbg {
+      background-image: radial-gradient(rgba(83, 48, 192, 0.18) 1px, transparent 1px);
+      background-size: 14px 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+    integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+    integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+    integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+    crossorigin="anonymous"></script>
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@0.479.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Tweaks panel shell -->
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+
+  <!-- App pieces -->
+  <script type="text/babel" src="src/icons.jsx"></script>
+  <script type="text/babel" src="src/hero.jsx"></script>
+  <script type="text/babel" src="src/sections.jsx"></script>
+  <script type="text/babel" src="src/app.jsx"></script>
+</body>
+
+</html>
