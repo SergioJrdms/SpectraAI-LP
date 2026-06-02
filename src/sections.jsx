@@ -370,38 +370,65 @@ function StepVisual({ active }) {
   return (
     <div className="relative aspect-[5/3] w-full rounded-2xl overflow-hidden border dotbg"
     style={{ borderColor: "var(--kv-border)", background: "linear-gradient(135deg, #FFFFFF, #FAF7FF)" }}>
-      {/* 1. Install + auto-feed */}
-      <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 0 ? "opacity-100" : "opacity-0"}`}>
-        <svg viewBox="0 0 400 240" className="w-[82%] h-auto">
-          {/* mounted camera */}
-          <g>
-            <rect x="36" y="66" width="96" height="56" rx="10" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-            <circle cx="78" cy="94" r="18" fill="none" stroke="#44279C" strokeWidth="2.5" />
-            <circle cx="78" cy="94" r="7" fill="#44279C" />
-            <rect x="126" y="82" width="12" height="24" rx="3" fill="#5330C0" />
-            {/* mount arm */}
-            <path d="M84 60 L84 48 L120 48" stroke="#44279C" strokeWidth="3" fill="none" strokeLinecap="round" />
-            <circle cx="84" cy="60" r="4" fill="#44279C" />
-            <text x="84" y="142" textAnchor="middle" fontSize="10" fontFamily="JetBrains Mono" fill="#6B7280">instalada por nós</text>
-          </g>
-          {/* signal flowing automatically */}
-          {[0, 1, 2].map((i) =>
-          <circle key={i} cx="150" cy="94" r="3.5" fill="#5330C0">
-              <animate attributeName="cx" values="150;250" dur="1.8s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0;1;0" dur="1.8s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
-            </circle>
-          )}
-          <path d="M150 94 L 250 94" stroke="#C5B9F5" strokeWidth="1.5" strokeDasharray="3 5" />
-          {/* platform / cloud */}
-          <g>
-            <rect x="258" y="62" width="108" height="64" rx="12" fill="#44279C" />
-            <g transform="translate(312,86)" stroke="white" strokeWidth="2" fill="none">
-              <path d="M-16 6 a10 10 0 0 1 4 -19 a12 12 0 0 1 22 4 a8 8 0 0 1 -2 15 Z" fill="rgba(255,255,255,0.14)" />
-            </g>
-            <text x="312" y="114" textAnchor="middle" fontSize="10" fontWeight="700" fill="white">Plataforma</text>
-          </g>
-          <text x="200" y="168" textAnchor="middle" fontSize="10" fontFamily="JetBrains Mono" fill="#5330C0">captação automática</text>
-        </svg>
+      {/* 1. Install + auto-feed — clean HTML + Lucide icons */}
+      <div className={`absolute inset-0 transition-opacity duration-500 ${active === 0 ? "opacity-100" : "opacity-0"}`}>
+        <div className="absolute inset-0 flex items-center justify-between px-[6%] gap-3">
+          {/* Camera with wall mount */}
+          <div className="relative flex flex-col items-center pl-7">
+            {/* Wall surface — vertical hatched stripe */}
+            <div className="absolute left-0 top-1 bottom-8 w-3 rounded-l-md flex flex-col justify-around py-1.5"
+                 style={{ background: "#EFEBFC", borderRight: "2px solid #44279C" }}>
+              {Array.from({length: 7}).map((_, i) => (
+                <div key={i} className="h-px self-end" style={{ width: 7, background: "#C5B9F5" }} />
+              ))}
+            </div>
+            {/* Wall mount plate */}
+            <div className="absolute left-3 top-1/2 -translate-y-1/2" style={{ marginTop: "-6px" }}>
+              <div className="w-1.5 h-4 rounded-r-sm" style={{ background: "#44279C" }} />
+            </div>
+            {/* Mount bracket arm */}
+            <div className="absolute left-[18px] top-1/2 -translate-y-1/2 h-[3px] rounded-full" style={{ width: 14, background: "#44279C", marginTop: "-4px" }} />
+            {/* Knuckle joint */}
+            <div className="absolute top-1/2 -translate-y-1/2 rounded-full grid place-items-center"
+                 style={{ left: 31, width: 9, height: 9, background: "#44279C", marginTop: "-4px" }}>
+              <div className="w-[3px] h-[3px] rounded-full" style={{ background: "#EFEBFC" }} />
+            </div>
+            {/* Camera body */}
+            <div className="relative w-20 h-20 rounded-2xl grid place-items-center shadow-lg border-2"
+                 style={{ borderColor: "#44279C", background: "white", boxShadow: "0 12px 24px -10px rgba(68,39,156,0.30)" }}>
+              <Icon name="cctv" size={44} strokeWidth={1.8} style={{ color: "#44279C" }} />
+              {/* Active LED */}
+              <div className="absolute top-2 right-2 w-2 h-2 rounded-full"
+                   style={{ background: "#16a34a", animation: "kvPulseGreen 1.6s ease-in-out infinite", boxShadow: "0 0 6px rgba(22,163,74,0.7)" }} />
+            </div>
+            <div className="mt-3 text-[10.5px] font-mono" style={{ color: "#6B7280" }}>instalada por nós</div>
+          </div>
+
+          {/* Signal flow */}
+          <div className="flex-1 relative h-3 mx-3">
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px"
+                 style={{ background: "repeating-linear-gradient(90deg, #C5B9F5 0, #C5B9F5 4px, transparent 4px, transparent 10px)" }} />
+            {[0, 0.6, 1.2].map((d, i) => (
+              <div key={i} className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+                   style={{
+                     background: "#5330C0",
+                     animation: `kvFlow 1.8s linear infinite`,
+                     animationDelay: `${d}s`,
+                     boxShadow: "0 0 6px rgba(83,48,192,0.5)",
+                   }} />
+            ))}
+          </div>
+
+          {/* Platform card */}
+          <div className="flex flex-col items-center">
+            <div className="rounded-2xl px-5 py-4 flex flex-col items-center gap-1.5 shadow-lg"
+                 style={{ background: "#44279C", boxShadow: "0 12px 28px -10px rgba(68,39,156,0.45)" }}>
+              <Icon name="cloud" size={34} strokeWidth={1.8} style={{ color: "white" }} />
+              <div className="text-white text-[11px] font-bold tracking-wide">Plataforma</div>
+            </div>
+            <div className="mt-3 text-[10.5px] font-mono" style={{ color: "#5330C0" }}>captação automática</div>
+          </div>
+        </div>
       </div>
       {/* 2. Discover behaviors */}
       <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 1 ? "opacity-100" : "opacity-0"}`}>
