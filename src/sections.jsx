@@ -761,80 +761,118 @@ function UseCases() {
 }
 
 function UseCaseArt({ kind }) {
+  const COMMON_BG = "linear-gradient(135deg, #FFFFFF, #FAF7FF)";
+
   if (kind === "heavy") {
     return (
-      <svg viewBox="0 0 300 180" className="absolute inset-0 w-full h-full">
-        {/* Hot ingots */}
-        <rect x="0" y="120" width="300" height="60" fill="#C5B9F5" opacity="0.5" />
-        <g>
-          <rect x="40" y="100" width="56" height="16" rx="2" fill="#44279C" />
-          <rect x="40" y="100" width="56" height="3" fill="#DCD2F8" opacity="0.7" />
-          <rect x="120" y="100" width="56" height="16" rx="2" fill="#5330C0" />
-          <rect x="200" y="100" width="56" height="16" rx="2" fill="#44279C" />
-        </g>
-        {/* Conveyor */}
-        <rect x="0" y="116" width="300" height="6" fill="#44279C" opacity="0.85" />
-        {[20, 80, 140, 200, 260].map((x) =>
-        <circle key={x} cx={x} cy={132} r={6} fill="#44279C" opacity="0.8" />
-        )}
-        {/* Crane / arm */}
-        <g stroke="#44279C" strokeWidth="3" fill="none">
-          <line x1="150" y1="20" x2="150" y2="80" />
-          <line x1="60" y1="40" x2="240" y2="40" />
-          <line x1="180" y1="40" x2="180" y2="60" />
-          <rect x="170" y="60" width="20" height="14" fill="#44279C" />
-        </g>
-        {/* bbox */}
-        <rect x="118" y="96" width="60" height="24" rx="2" fill="none" stroke="#44279C" strokeWidth="1.5" strokeDasharray="3 3" />
-      </svg>);
-
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Backdrop: faint horizontal "industrial floor" lines */}
+        <div className="absolute inset-0 opacity-50" style={{
+          backgroundImage: "repeating-linear-gradient(0deg, transparent 0 18px, rgba(83,48,192,0.06) 18px 19px)",
+        }} />
+        {/* Top-right floating detection chip */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-mono shadow-md"
+             style={{ background: "white", border: "1.5px solid #5330C0", color: "#44279C" }}>
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5330C0", boxShadow: "0 0 5px rgba(83,48,192,0.7)" }} />
+          ciclo da prensa
+        </div>
+        {/* Hero icon */}
+        <div className="absolute inset-0 grid place-items-center">
+          <div className="grid place-items-center w-24 h-24 rounded-2xl"
+               style={{ background: "white", border: "1.5px solid #C5B9F5", boxShadow: "0 18px 36px -16px rgba(68,39,156,0.25)" }}>
+            <Icon name="factory" size={56} strokeWidth={1.4} style={{ color: "#44279C" }} />
+          </div>
+        </div>
+        {/* Bottom conveyor strip with material blocks */}
+        <div className="absolute bottom-0 inset-x-0">
+          <div className="flex items-end justify-center gap-3 pb-2.5">
+            <div className="w-10 h-3.5 rounded-sm" style={{ background: "#683BED" }} />
+            <div className="w-14 h-4 rounded-sm" style={{ background: "#44279C" }} />
+            <div className="w-10 h-3 rounded-sm" style={{ background: "#5330C0" }} />
+            <div className="w-12 h-3.5 rounded-sm" style={{ background: "#44279C" }} />
+          </div>
+          <div className="h-1.5 w-full" style={{ background: "#44279C" }} />
+          <div className="h-px w-full" style={{ background: "rgba(0,0,0,0.15)" }} />
+        </div>
+      </div>
+    );
   }
+
   if (kind === "warehouse") {
     return (
-      <svg viewBox="0 0 300 180" className="absolute inset-0 w-full h-full">
-        {/* shelves */}
-        {[0, 1, 2].map((r) =>
-        <g key={r}>
-            <rect x={20 + r * 90} y={30} width="62" height="120" fill="white" stroke="#C5B9F5" strokeWidth="1.5" />
-            {[0, 1, 2, 3].map((s) =>
-          <g key={s}>
-                <line x1={20 + r * 90} y1={30 + (s + 1) * 30} x2={82 + r * 90} y2={30 + (s + 1) * 30} stroke="#C5B9F5" />
-                <rect x={26 + r * 90} y={32 + s * 30} width="16" height="22" fill="#C5B9F5" rx="1" />
-                <rect x={48 + r * 90} y={32 + s * 30} width="20" height="22" fill="#5330C0" rx="1" />
-              </g>
-          )}
-          </g>
-        )}
-        {/* picker */}
-        <g transform="translate(150,140)">
-          <circle cx="0" cy="-12" r="6" fill="#44279C" />
-          <rect x="-7" y="-6" width="14" height="20" fill="#44279C" rx="2" />
-        </g>
-        <rect x="138" y="116" width="24" height="36" fill="none" stroke="#44279C" strokeWidth="1.5" strokeDasharray="3 3" />
-      </svg>);
-
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Backdrop: faint grid suggesting warehouse aisles */}
+        <div className="absolute inset-0 opacity-50" style={{
+          backgroundImage:
+            "linear-gradient(90deg, transparent 0 23px, rgba(83,48,192,0.07) 23px 24px), " +
+            "linear-gradient(0deg,  transparent 0 23px, rgba(83,48,192,0.07) 23px 24px)",
+        }} />
+        {/* Top-right detection chip */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-mono shadow-md"
+             style={{ background: "white", border: "1.5px solid #5330C0", color: "#44279C" }}>
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5330C0", boxShadow: "0 0 5px rgba(83,48,192,0.7)" }} />
+          transporte · pallet
+        </div>
+        {/* Top-left stacked pallet boxes accent */}
+        <div className="absolute top-3 left-3 flex flex-col gap-1">
+          <div className="flex gap-1">
+            <div className="w-5 h-4 rounded-sm" style={{ background: "#C5B9F5" }} />
+            <div className="w-5 h-4 rounded-sm" style={{ background: "#683BED" }} />
+          </div>
+          <div className="flex gap-1">
+            <div className="w-5 h-4 rounded-sm" style={{ background: "#5330C0" }} />
+            <div className="w-5 h-4 rounded-sm" style={{ background: "#C5B9F5" }} />
+          </div>
+        </div>
+        {/* Hero icon */}
+        <div className="absolute inset-0 grid place-items-center">
+          <div className="grid place-items-center w-24 h-24 rounded-2xl"
+               style={{ background: "white", border: "1.5px solid #C5B9F5", boxShadow: "0 18px 36px -16px rgba(68,39,156,0.25)" }}>
+            <Icon name="forklift" size={56} strokeWidth={1.4} style={{ color: "#44279C" }} />
+          </div>
+        </div>
+        {/* Bottom floor line */}
+        <div className="absolute bottom-0 inset-x-0 h-1.5" style={{ background: "#44279C" }} />
+      </div>
+    );
   }
+
   // assembly
   return (
-    <svg viewBox="0 0 300 180" className="absolute inset-0 w-full h-full">
-      <rect x="0" y="100" width="300" height="14" fill="#44279C" opacity="0.85" />
-      {[0, 1, 2, 3].map((i) =>
-      <g key={i}>
-          <rect x={20 + i * 72} y={70} width="40" height="30" rx="3" fill="#5330C0" />
-          <circle cx={40 + i * 72} cy={50} r={8} fill="#44279C" />
-          <rect x={32 + i * 72} y={56} width="16" height="20" rx="2" fill="#44279C" />
-        </g>
-      )}
-      {/* arms */}
-      {[0, 1, 2, 3].map((i) =>
-      <g key={i} stroke="#44279C" strokeWidth="2" fill="none" transform={`translate(${40 + i * 72},30) rotate(${i % 2 * 40 - 20})`}>
-          <line x1="0" y1="0" x2="0" y2="20" />
-          <rect x="-5" y="20" width="10" height="6" fill="#44279C" />
-        </g>
-      )}
-      <rect x={20 + 72} y="62" width="40" height="42" rx="3" fill="none" stroke="#44279C" strokeWidth="1.5" strokeDasharray="3 3" />
-    </svg>);
-
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Backdrop: faint dot grid */}
+      <div className="absolute inset-0 opacity-60" style={{
+        backgroundImage: "radial-gradient(rgba(83,48,192,0.16) 1px, transparent 1px)",
+        backgroundSize: "14px 14px",
+      }} />
+      {/* Top-right detection chip */}
+      <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-mono shadow-md"
+           style={{ background: "white", border: "1.5px solid #5330C0", color: "#44279C" }}>
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5330C0", boxShadow: "0 0 5px rgba(83,48,192,0.7)" }} />
+        estação 03 · 28s
+      </div>
+      {/* Hero — meshing gears */}
+      <div className="absolute inset-0 grid place-items-center">
+        <div className="relative grid place-items-center w-24 h-24 rounded-2xl"
+             style={{ background: "white", border: "1.5px solid #C5B9F5", boxShadow: "0 18px 36px -16px rgba(68,39,156,0.25)" }}>
+          <Icon name="cog" size={52} strokeWidth={1.4} style={{ color: "#44279C" }} />
+          <div className="absolute -top-2 -right-2 w-9 h-9 rounded-full grid place-items-center"
+               style={{ background: "white", border: "1.5px solid #C5B9F5" }}>
+            <Icon name="cog" size={20} strokeWidth={1.6} style={{ color: "#5330C0" }} />
+          </div>
+        </div>
+      </div>
+      {/* Bottom: 4 small workstation indicators */}
+      <div className="absolute bottom-2 inset-x-0 flex items-end justify-center gap-3">
+        {[0,1,2,3].map((i) => (
+          <div key={i} className="flex flex-col items-center gap-1">
+            <div className="w-7 h-1.5 rounded-sm" style={{ background: i === 1 ? "#44279C" : "#C5B9F5" }} />
+            <div className="text-[8px] font-mono" style={{ color: "#6B7280" }}>0{i+1}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 window.UseCases = UseCases;
 
