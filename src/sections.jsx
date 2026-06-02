@@ -441,40 +441,58 @@ function StepVisual({ active }) {
       {/* 3. Validation loop + AI question */}
       <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 2 ? "opacity-100" : "opacity-0"}`}>
         <svg viewBox="0 0 400 240" className="w-[84%] h-auto">
-          {/* behavior to validate */}
-          <rect x="24" y="46" width="172" height="64" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="38" y="68" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
-          <text x="38" y="82" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
+          {/* behavior card (left) — taller, with before/after state */}
+          <rect x="24" y="40" width="172" height="160" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="38" y="62" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
+          <text x="38" y="76" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
           {/* confirm / correct buttons */}
           <g>
-            <rect x="38" y="90" width="54" height="15" rx="7.5" fill="#dcfce7" />
-            <text x="65" y="100" textAnchor="middle" fontSize="8" fontWeight="700" fill="#16a34a">✓ confirmar</text>
-            <rect x="98" y="90" width="48" height="15" rx="7.5" fill="white" stroke="#C5B9F5" />
-            <text x="122" y="100" textAnchor="middle" fontSize="8" fill="#6B7280">✎ corrigir</text>
+            <rect x="38" y="86" width="54" height="15" rx="7.5" fill="#dcfce7" />
+            <text x="65" y="96" textAnchor="middle" fontSize="8" fontWeight="700" fill="#16a34a">✓ confirmar</text>
+            <rect x="98" y="86" width="48" height="15" rx="7.5" fill="white" stroke="#C5B9F5" />
+            <text x="122" y="96" textAnchor="middle" fontSize="8" fill="#6B7280">✎ corrigir</text>
           </g>
-          {/* loop arrows between human and AI */}
-          <g>
-            <path d="M200 78 C 224 78, 224 60, 248 60" stroke="#5330C0" strokeWidth="1.5" fill="none" strokeDasharray="3 4">
-              <animate attributeName="stroke-dashoffset" values="14;0" dur="1.1s" repeatCount="indefinite" />
-            </path>
-            <path d="M248 150 C 224 150, 224 168, 200 168" stroke="#5330C0" strokeWidth="1.5" fill="none" strokeDasharray="3 4">
-              <animate attributeName="stroke-dashoffset" values="0;14" dur="1.1s" repeatCount="indefinite" />
-            </path>
-          </g>
-          {/* AI question bubble */}
-          <rect x="248" y="40" width="128" height="78" rx="9" fill="#EFEBFC" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="262" y="60" fontSize="8" fontWeight="700" fill="#44279C" letterSpacing="0.5">PERGUNTA DA IA</text>
+          {/* divider */}
+          <line x1="38" y1="118" x2="182" y2="118" stroke="#EFEBFC" strokeWidth="1.5" />
+          {/* after learning — same behavior, now confident */}
+          <text x="38" y="134" fontSize="8" fontWeight="700" fill="#16a34a" letterSpacing="0.5">APÓS APRENDER</text>
+          <text x="38" y="152" fontSize="9.5" fill="#374151">Reconhece sozinho</text>
+          <text x="38" y="166" fontSize="9" fill="#9CA3AF" fontStyle="italic">“espera · padrão do turno”</text>
+          <rect x="38" y="176" width="100" height="7" rx="3.5" fill="#EFEBFC" />
+          <rect x="38" y="176" width="6" height="7" rx="3.5" fill="#16a34a">
+            <animate attributeName="width" values="6;94" dur="1.6s" fill="freeze" />
+          </rect>
+          <text x="144" y="183" fontSize="8" fontFamily="JetBrains Mono" fontWeight="700" fill="#16a34a">94%</text>
+
+          {/* AI question bubble (right top) */}
+          <rect x="248" y="40" width="128" height="82" rx="9" fill="#EFEBFC" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="262" y="58" fontSize="8" fontWeight="700" fill="#44279C" letterSpacing="0.5">PERGUNTA DA IA</text>
           <text x="262" y="76" fontSize="9" fill="#374151">Essa pausa antes da</text>
           <text x="262" y="89" fontSize="9" fill="#374151">prensa é padrão do</text>
           <text x="262" y="102" fontSize="9" fill="#374151">turno ou exceção?</text>
-          {/* confidence growing after learning */}
-          <rect x="248" y="132" width="128" height="54" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="262" y="150" fontSize="8.5" fill="#6B7280">confiança do modelo</text>
-          <rect x="262" y="158" width="100" height="8" rx="4" fill="#EFEBFC" />
-          <rect x="262" y="158" width="6" height="8" rx="4" fill="#44279C">
-            <animate attributeName="width" values="6;94" dur="1.6s" fill="freeze" />
-          </rect>
-          <text x="262" y="180" fontSize="8" fontFamily="JetBrains Mono" fill="#16a34a">71% → 94% ao aprender</text>
+
+          {/* user answer card (right bottom) */}
+          <rect x="248" y="138" width="128" height="62" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="262" y="156" fontSize="8" fontWeight="700" fill="#5330C0" letterSpacing="0.5">SUA RESPOSTA</text>
+          <text x="262" y="174" fontSize="9" fill="#374151">“Padrão do turno.</text>
+          <text x="262" y="187" fontSize="9" fill="#374151">A prensa demora 12s.”</text>
+
+          {/* loop arrow 1: behavior -> AI question (asks) */}
+          <g>
+            <path d="M196 70 C 222 70, 222 64, 246 64" stroke="#5330C0" strokeWidth="1.6" fill="none" strokeDasharray="4 4">
+              <animate attributeName="stroke-dashoffset" values="16;0" dur="1.1s" repeatCount="indefinite" />
+            </path>
+            <path d="M240 60 L 248 64 L 240 68 Z" fill="#5330C0" />
+            <text x="212" y="58" fontSize="7.5" fill="#5330C0" fontFamily="JetBrains Mono">pergunta</text>
+          </g>
+          {/* loop arrow 2: user answer -> behavior (learns) */}
+          <g>
+            <path d="M246 168 C 222 168, 222 168, 198 168" stroke="#16a34a" strokeWidth="1.6" fill="none" strokeDasharray="4 4">
+              <animate attributeName="stroke-dashoffset" values="0;16" dur="1.1s" repeatCount="indefinite" />
+            </path>
+            <path d="M204 164 L 196 168 L 204 172 Z" fill="#16a34a" />
+            <text x="212" y="180" fontSize="7.5" fill="#16a34a" fontFamily="JetBrains Mono">aprende</text>
+          </g>
         </svg>
       </div>
       {/* 4. Lean suggestions + evolution over time */}
@@ -483,16 +501,17 @@ function StepVisual({ active }) {
           {/* Lean suggestion card */}
           <rect x="22" y="40" width="180" height="160" rx="10" fill="white" stroke="#C5B9F5" strokeWidth="2" />
           <text x="36" y="62" fontSize="9" fontWeight="700" fill="#44279C" letterSpacing="0.5">SUGESTÕES LEAN</text>
+          <text x="188" y="62" textAnchor="end" fontSize="7.5" fontFamily="JetBrains Mono" fill="#9CA3AF">impacto</text>
           {[
-          { t: "Espera evitável · prensa", w: 78 },
-          { t: "Movimentação em excesso", w: 54 },
-          { t: "Setup acima do padrão", w: 38 }].
+          { t: "Espera evitável · prensa",  w: 78, pct: "alto" },
+          { t: "Movimentação em excesso", w: 54, pct: "médio" },
+          { t: "Setup acima do padrão",    w: 38, pct: "baixo" }].
           map((s, i) =>
-          <g key={i} transform={`translate(36, ${78 + i * 38})`}>
+          <g key={i} transform={`translate(36, ${82 + i * 36})`}>
               <text fontSize="9.5" fill="#374151">{s.t}</text>
-              <rect y="8" width="150" height="7" rx="3.5" fill="#EFEBFC" />
+              <text x="152" y="0" textAnchor="end" fontSize="8" fontFamily="JetBrains Mono" fontWeight="700" fill={i === 0 ? "#44279C" : "#5330C0"}>{s.pct}</text>
+              <rect y="8" width="152" height="7" rx="3.5" fill="#EFEBFC" />
               <rect y="8" width={s.w * 1.5} height="7" rx="3.5" fill={i === 0 ? "#44279C" : "#C5B9F5"} />
-              <text x="154" y="15" fontSize="8" fontFamily="JetBrains Mono" fill="#5330C0">impacto</text>
             </g>
           )}
           {/* Evolution curve */}
