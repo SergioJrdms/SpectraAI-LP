@@ -162,28 +162,30 @@ function CredBar() {
   { name: "Nome Empresa", sub: "metalurgia" }];
 
   return (
-    <section className="py-14 border-y" style={{ borderColor: "var(--kv-border)", background: "var(--kv-soft)" }}>
-      <div className="mx-auto max-w-7xl px-5">
-        <p className="reveal text-center text-[12px] uppercase tracking-[0.18em] font-semibold"
-        style={{ color: "var(--kv-muted)" }}>
-          Em operação com indústrias do Brasil
-        </p>
-        <div className="reveal reveal-d1 mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-          {logos.map((l, i) =>
-          <div key={i} className="flex items-baseline gap-2 opacity-70 hover:opacity-100 transition-opacity">
-              <span className="font-display font-semibold text-[20px] tracking-tight"
-            style={{ color: "var(--kv-ink)", letterSpacing: "-0.03em" }}>
-                {l.name}
-              </span>
-              <span className="text-[10.5px] uppercase tracking-wider font-medium"
-            style={{ color: "var(--kv-muted)" }}>
-                · {l.sub}
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>);
+    // <section className="py-14 border-y" style={{ borderColor: "var(--kv-border)", background: "var(--kv-soft)" }}>
+    //   <div className="mx-auto max-w-7xl px-5">
+    //     <p className="reveal text-center text-[12px] uppercase tracking-[0.18em] font-semibold"
+    //     style={{ color: "var(--kv-muted)" }}>
+    //       Em operação com indústrias do Brasil
+    //     </p>
+    //     <div className="reveal reveal-d1 mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+    //       {logos.map((l, i) =>
+    //       <div key={i} className="flex items-baseline gap-2 opacity-70 hover:opacity-100 transition-opacity">
+    //           <span className="font-display font-semibold text-[20px] tracking-tight"
+    //         style={{ color: "var(--kv-ink)", letterSpacing: "-0.03em" }}>
+    //             {l.name}
+    //           </span>
+    //           <span className="text-[10.5px] uppercase tracking-wider font-medium"
+    //         style={{ color: "var(--kv-muted)" }}>
+    //             · {l.sub}
+    //           </span>
+    //         </div>
+    //       )}
+    //     </div>
+    //   </div>
+    // </section>
+    // 
+    <section></section>);
 
 }
 window.CredBar = CredBar;
@@ -370,65 +372,38 @@ function StepVisual({ active }) {
   return (
     <div className="relative aspect-[5/3] w-full rounded-2xl overflow-hidden border dotbg"
     style={{ borderColor: "var(--kv-border)", background: "linear-gradient(135deg, #FFFFFF, #FAF7FF)" }}>
-      {/* 1. Install + auto-feed — clean HTML + Lucide icons */}
-      <div className={`absolute inset-0 transition-opacity duration-500 ${active === 0 ? "opacity-100" : "opacity-0"}`}>
-        <div className="absolute inset-0 flex items-center justify-between px-[6%] gap-3">
-          {/* Camera with wall mount */}
-          <div className="relative flex flex-col items-center pl-7">
-            {/* Wall surface — vertical hatched stripe */}
-            <div className="absolute left-0 top-1 bottom-8 w-3 rounded-l-md flex flex-col justify-around py-1.5"
-                 style={{ background: "#EFEBFC", borderRight: "2px solid #44279C" }}>
-              {Array.from({length: 7}).map((_, i) => (
-                <div key={i} className="h-px self-end" style={{ width: 7, background: "#C5B9F5" }} />
-              ))}
-            </div>
-            {/* Wall mount plate */}
-            <div className="absolute left-3 top-1/2 -translate-y-1/2" style={{ marginTop: "-6px" }}>
-              <div className="w-1.5 h-4 rounded-r-sm" style={{ background: "#44279C" }} />
-            </div>
-            {/* Mount bracket arm */}
-            <div className="absolute left-[18px] top-1/2 -translate-y-1/2 h-[3px] rounded-full" style={{ width: 14, background: "#44279C", marginTop: "-4px" }} />
-            {/* Knuckle joint */}
-            <div className="absolute top-1/2 -translate-y-1/2 rounded-full grid place-items-center"
-                 style={{ left: 31, width: 9, height: 9, background: "#44279C", marginTop: "-4px" }}>
-              <div className="w-[3px] h-[3px] rounded-full" style={{ background: "#EFEBFC" }} />
-            </div>
-            {/* Camera body */}
-            <div className="relative w-20 h-20 rounded-2xl grid place-items-center shadow-lg border-2"
-                 style={{ borderColor: "#44279C", background: "white", boxShadow: "0 12px 24px -10px rgba(68,39,156,0.30)" }}>
-              <Icon name="cctv" size={44} strokeWidth={1.8} style={{ color: "#44279C" }} />
-              {/* Active LED */}
-              <div className="absolute top-2 right-2 w-2 h-2 rounded-full"
-                   style={{ background: "#16a34a", animation: "kvPulseGreen 1.6s ease-in-out infinite", boxShadow: "0 0 6px rgba(22,163,74,0.7)" }} />
-            </div>
-            <div className="mt-3 text-[10.5px] font-mono" style={{ color: "#6B7280" }}>instalada por nós</div>
-          </div>
-
-          {/* Signal flow */}
-          <div className="flex-1 relative h-3 mx-3">
-            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px"
-                 style={{ background: "repeating-linear-gradient(90deg, #C5B9F5 0, #C5B9F5 4px, transparent 4px, transparent 10px)" }} />
-            {[0, 0.6, 1.2].map((d, i) => (
-              <div key={i} className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
-                   style={{
-                     background: "#5330C0",
-                     animation: `kvFlow 1.8s linear infinite`,
-                     animationDelay: `${d}s`,
-                     boxShadow: "0 0 6px rgba(83,48,192,0.5)",
-                   }} />
-            ))}
-          </div>
-
-          {/* Platform card */}
-          <div className="flex flex-col items-center">
-            <div className="rounded-2xl px-5 py-4 flex flex-col items-center gap-1.5 shadow-lg"
-                 style={{ background: "#44279C", boxShadow: "0 12px 28px -10px rgba(68,39,156,0.45)" }}>
-              <Icon name="cloud" size={34} strokeWidth={1.8} style={{ color: "white" }} />
-              <div className="text-white text-[11px] font-bold tracking-wide">Plataforma</div>
-            </div>
-            <div className="mt-3 text-[10.5px] font-mono" style={{ color: "#5330C0" }}>captação automática</div>
-          </div>
-        </div>
+      {/* 1. Install + auto-feed */}
+      <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 0 ? "opacity-100" : "opacity-0"}`}>
+        <svg viewBox="0 0 400 240" className="w-[82%] h-auto">
+          {/* mounted camera */}
+          <g>
+            <rect x="36" y="66" width="96" height="56" rx="10" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+            <circle cx="78" cy="94" r="18" fill="none" stroke="#44279C" strokeWidth="2.5" />
+            <circle cx="78" cy="94" r="7" fill="#44279C" />
+            <rect x="126" y="82" width="12" height="24" rx="3" fill="#5330C0" />
+            {/* mount arm */}
+            <path d="M84 60 L84 48 L120 48" stroke="#44279C" strokeWidth="3" fill="none" strokeLinecap="round" />
+            <circle cx="84" cy="60" r="4" fill="#44279C" />
+            <text x="84" y="142" textAnchor="middle" fontSize="10" fontFamily="JetBrains Mono" fill="#6B7280">instalada por nós</text>
+          </g>
+          {/* signal flowing automatically */}
+          {[0, 1, 2].map((i) =>
+          <circle key={i} cx="150" cy="94" r="3.5" fill="#5330C0">
+              <animate attributeName="cx" values="150;250" dur="1.8s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0;1;0" dur="1.8s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
+            </circle>
+          )}
+          <path d="M150 94 L 250 94" stroke="#C5B9F5" strokeWidth="1.5" strokeDasharray="3 5" />
+          {/* platform / cloud */}
+          <g>
+            <rect x="258" y="62" width="108" height="64" rx="12" fill="#44279C" />
+            <g transform="translate(312,86)" stroke="white" strokeWidth="2" fill="none">
+              <path d="M-16 6 a10 10 0 0 1 4 -19 a12 12 0 0 1 22 4 a8 8 0 0 1 -2 15 Z" fill="rgba(255,255,255,0.14)" />
+            </g>
+            <text x="312" y="114" textAnchor="middle" fontSize="10" fontWeight="700" fill="white">Plataforma</text>
+          </g>
+          <text x="200" y="168" textAnchor="middle" fontSize="10" fontFamily="JetBrains Mono" fill="#5330C0">captação automática</text>
+        </svg>
       </div>
       {/* 2. Discover behaviors */}
       <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 1 ? "opacity-100" : "opacity-0"}`}>
@@ -468,58 +443,40 @@ function StepVisual({ active }) {
       {/* 3. Validation loop + AI question */}
       <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 2 ? "opacity-100" : "opacity-0"}`}>
         <svg viewBox="0 0 400 240" className="w-[84%] h-auto">
-          {/* behavior card (left) — taller, with before/after state */}
-          <rect x="24" y="40" width="172" height="160" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="38" y="62" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
-          <text x="38" y="76" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
+          {/* behavior to validate */}
+          <rect x="24" y="46" width="172" height="64" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="38" y="68" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
+          <text x="38" y="82" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
           {/* confirm / correct buttons */}
           <g>
-            <rect x="38" y="86" width="54" height="15" rx="7.5" fill="#dcfce7" />
-            <text x="65" y="96" textAnchor="middle" fontSize="8" fontWeight="700" fill="#16a34a">✓ confirmar</text>
-            <rect x="98" y="86" width="48" height="15" rx="7.5" fill="white" stroke="#C5B9F5" />
-            <text x="122" y="96" textAnchor="middle" fontSize="8" fill="#6B7280">✎ corrigir</text>
+            <rect x="38" y="90" width="54" height="15" rx="7.5" fill="#dcfce7" />
+            <text x="65" y="100" textAnchor="middle" fontSize="8" fontWeight="700" fill="#16a34a">✓ confirmar</text>
+            <rect x="98" y="90" width="48" height="15" rx="7.5" fill="white" stroke="#C5B9F5" />
+            <text x="122" y="100" textAnchor="middle" fontSize="8" fill="#6B7280">✎ corrigir</text>
           </g>
-          {/* divider */}
-          <line x1="38" y1="118" x2="182" y2="118" stroke="#EFEBFC" strokeWidth="1.5" />
-          {/* after learning — same behavior, now confident */}
-          <text x="38" y="134" fontSize="8" fontWeight="700" fill="#16a34a" letterSpacing="0.5">APÓS APRENDER</text>
-          <text x="38" y="152" fontSize="9.5" fill="#374151">Reconhece sozinho</text>
-          <text x="38" y="166" fontSize="9" fill="#9CA3AF" fontStyle="italic">“espera · padrão do turno”</text>
-          <rect x="38" y="176" width="100" height="7" rx="3.5" fill="#EFEBFC" />
-          <rect x="38" y="176" width="6" height="7" rx="3.5" fill="#16a34a">
-            <animate attributeName="width" values="6;94" dur="1.6s" fill="freeze" />
-          </rect>
-          <text x="144" y="183" fontSize="8" fontFamily="JetBrains Mono" fontWeight="700" fill="#16a34a">94%</text>
-
-          {/* AI question bubble (right top) */}
-          <rect x="248" y="40" width="128" height="82" rx="9" fill="#EFEBFC" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="262" y="58" fontSize="8" fontWeight="700" fill="#44279C" letterSpacing="0.5">PERGUNTA DA IA</text>
+          {/* loop arrows between human and AI */}
+          <g>
+            <path d="M200 78 C 224 78, 224 60, 248 60" stroke="#5330C0" strokeWidth="1.5" fill="none" strokeDasharray="3 4">
+              <animate attributeName="stroke-dashoffset" values="14;0" dur="1.1s" repeatCount="indefinite" />
+            </path>
+            <path d="M248 150 C 224 150, 224 168, 200 168" stroke="#5330C0" strokeWidth="1.5" fill="none" strokeDasharray="3 4">
+              <animate attributeName="stroke-dashoffset" values="0;14" dur="1.1s" repeatCount="indefinite" />
+            </path>
+          </g>
+          {/* AI question bubble */}
+          <rect x="248" y="40" width="128" height="78" rx="9" fill="#EFEBFC" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="262" y="60" fontSize="8" fontWeight="700" fill="#44279C" letterSpacing="0.5">PERGUNTA DA IA</text>
           <text x="262" y="76" fontSize="9" fill="#374151">Essa pausa antes da</text>
           <text x="262" y="89" fontSize="9" fill="#374151">prensa é padrão do</text>
           <text x="262" y="102" fontSize="9" fill="#374151">turno ou exceção?</text>
-
-          {/* user answer card (right bottom) */}
-          <rect x="248" y="138" width="128" height="62" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="262" y="156" fontSize="8" fontWeight="700" fill="#5330C0" letterSpacing="0.5">SUA RESPOSTA</text>
-          <text x="262" y="174" fontSize="9" fill="#374151">“Padrão do turno.</text>
-          <text x="262" y="187" fontSize="9" fill="#374151">A prensa demora 12s.”</text>
-
-          {/* loop arrow 1: behavior -> AI question (asks) */}
-          <g>
-            <path d="M196 70 C 222 70, 222 64, 246 64" stroke="#5330C0" strokeWidth="1.6" fill="none" strokeDasharray="4 4">
-              <animate attributeName="stroke-dashoffset" values="16;0" dur="1.1s" repeatCount="indefinite" />
-            </path>
-            <path d="M240 60 L 248 64 L 240 68 Z" fill="#5330C0" />
-            <text x="212" y="58" fontSize="7.5" fill="#5330C0" fontFamily="JetBrains Mono">pergunta</text>
-          </g>
-          {/* loop arrow 2: user answer -> behavior (learns) */}
-          <g>
-            <path d="M246 168 C 222 168, 222 168, 198 168" stroke="#16a34a" strokeWidth="1.6" fill="none" strokeDasharray="4 4">
-              <animate attributeName="stroke-dashoffset" values="0;16" dur="1.1s" repeatCount="indefinite" />
-            </path>
-            <path d="M204 164 L 196 168 L 204 172 Z" fill="#16a34a" />
-            <text x="212" y="180" fontSize="7.5" fill="#16a34a" fontFamily="JetBrains Mono">aprende</text>
-          </g>
+          {/* confidence growing after learning */}
+          <rect x="248" y="132" width="128" height="54" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="262" y="150" fontSize="8.5" fill="#6B7280">confiança do modelo</text>
+          <rect x="262" y="158" width="100" height="8" rx="4" fill="#EFEBFC" />
+          <rect x="262" y="158" width="6" height="8" rx="4" fill="#44279C">
+            <animate attributeName="width" values="6;94" dur="1.6s" fill="freeze" />
+          </rect>
+          <text x="262" y="180" fontSize="8" fontFamily="JetBrains Mono" fill="#16a34a">71% → 94% ao aprender</text>
         </svg>
       </div>
       {/* 4. Lean suggestions + evolution over time */}
@@ -528,17 +485,16 @@ function StepVisual({ active }) {
           {/* Lean suggestion card */}
           <rect x="22" y="40" width="180" height="160" rx="10" fill="white" stroke="#C5B9F5" strokeWidth="2" />
           <text x="36" y="62" fontSize="9" fontWeight="700" fill="#44279C" letterSpacing="0.5">SUGESTÕES LEAN</text>
-          <text x="188" y="62" textAnchor="end" fontSize="7.5" fontFamily="JetBrains Mono" fill="#9CA3AF">impacto</text>
           {[
-          { t: "Espera evitável · prensa",  w: 78, pct: "alto" },
-          { t: "Movimentação em excesso", w: 54, pct: "médio" },
-          { t: "Setup acima do padrão",    w: 38, pct: "baixo" }].
+          { t: "Espera evitável · prensa", w: 78 },
+          { t: "Movimentação em excesso", w: 54 },
+          { t: "Setup acima do padrão", w: 38 }].
           map((s, i) =>
-          <g key={i} transform={`translate(36, ${82 + i * 36})`}>
+          <g key={i} transform={`translate(36, ${78 + i * 38})`}>
               <text fontSize="9.5" fill="#374151">{s.t}</text>
-              <text x="152" y="0" textAnchor="end" fontSize="8" fontFamily="JetBrains Mono" fontWeight="700" fill={i === 0 ? "#44279C" : "#5330C0"}>{s.pct}</text>
-              <rect y="8" width="152" height="7" rx="3.5" fill="#EFEBFC" />
+              <rect y="8" width="150" height="7" rx="3.5" fill="#EFEBFC" />
               <rect y="8" width={s.w * 1.5} height="7" rx="3.5" fill={i === 0 ? "#44279C" : "#C5B9F5"} />
+              <text x="154" y="15" fontSize="8" fontFamily="JetBrains Mono" fill="#5330C0">impacto</text>
             </g>
           )}
           {/* Evolution curve */}
@@ -761,118 +717,80 @@ function UseCases() {
 }
 
 function UseCaseArt({ kind }) {
-  const COMMON_BG = "linear-gradient(135deg, #FFFFFF, #FAF7FF)";
-
   if (kind === "heavy") {
     return (
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Backdrop: faint horizontal "industrial floor" lines */}
-        <div className="absolute inset-0 opacity-50" style={{
-          backgroundImage: "repeating-linear-gradient(0deg, transparent 0 18px, rgba(83,48,192,0.06) 18px 19px)",
-        }} />
-        {/* Top-right floating detection chip */}
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-mono shadow-md"
-             style={{ background: "white", border: "1.5px solid #5330C0", color: "#44279C" }}>
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5330C0", boxShadow: "0 0 5px rgba(83,48,192,0.7)" }} />
-          ciclo da prensa
-        </div>
-        {/* Hero icon */}
-        <div className="absolute inset-0 grid place-items-center">
-          <div className="grid place-items-center w-24 h-24 rounded-2xl"
-               style={{ background: "white", border: "1.5px solid #C5B9F5", boxShadow: "0 18px 36px -16px rgba(68,39,156,0.25)" }}>
-            <Icon name="factory" size={56} strokeWidth={1.4} style={{ color: "#44279C" }} />
-          </div>
-        </div>
-        {/* Bottom conveyor strip with material blocks */}
-        <div className="absolute bottom-0 inset-x-0">
-          <div className="flex items-end justify-center gap-3 pb-2.5">
-            <div className="w-10 h-3.5 rounded-sm" style={{ background: "#683BED" }} />
-            <div className="w-14 h-4 rounded-sm" style={{ background: "#44279C" }} />
-            <div className="w-10 h-3 rounded-sm" style={{ background: "#5330C0" }} />
-            <div className="w-12 h-3.5 rounded-sm" style={{ background: "#44279C" }} />
-          </div>
-          <div className="h-1.5 w-full" style={{ background: "#44279C" }} />
-          <div className="h-px w-full" style={{ background: "rgba(0,0,0,0.15)" }} />
-        </div>
-      </div>
-    );
-  }
+      <svg viewBox="0 0 300 180" className="absolute inset-0 w-full h-full">
+        {/* Hot ingots */}
+        <rect x="0" y="120" width="300" height="60" fill="#C5B9F5" opacity="0.5" />
+        <g>
+          <rect x="40" y="100" width="56" height="16" rx="2" fill="#44279C" />
+          <rect x="40" y="100" width="56" height="3" fill="#DCD2F8" opacity="0.7" />
+          <rect x="120" y="100" width="56" height="16" rx="2" fill="#5330C0" />
+          <rect x="200" y="100" width="56" height="16" rx="2" fill="#44279C" />
+        </g>
+        {/* Conveyor */}
+        <rect x="0" y="116" width="300" height="6" fill="#44279C" opacity="0.85" />
+        {[20, 80, 140, 200, 260].map((x) =>
+        <circle key={x} cx={x} cy={132} r={6} fill="#44279C" opacity="0.8" />
+        )}
+        {/* Crane / arm */}
+        <g stroke="#44279C" strokeWidth="3" fill="none">
+          <line x1="150" y1="20" x2="150" y2="80" />
+          <line x1="60" y1="40" x2="240" y2="40" />
+          <line x1="180" y1="40" x2="180" y2="60" />
+          <rect x="170" y="60" width="20" height="14" fill="#44279C" />
+        </g>
+        {/* bbox */}
+        <rect x="118" y="96" width="60" height="24" rx="2" fill="none" stroke="#44279C" strokeWidth="1.5" strokeDasharray="3 3" />
+      </svg>);
 
+  }
   if (kind === "warehouse") {
     return (
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Backdrop: faint grid suggesting warehouse aisles */}
-        <div className="absolute inset-0 opacity-50" style={{
-          backgroundImage:
-            "linear-gradient(90deg, transparent 0 23px, rgba(83,48,192,0.07) 23px 24px), " +
-            "linear-gradient(0deg,  transparent 0 23px, rgba(83,48,192,0.07) 23px 24px)",
-        }} />
-        {/* Top-right detection chip */}
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-mono shadow-md"
-             style={{ background: "white", border: "1.5px solid #5330C0", color: "#44279C" }}>
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5330C0", boxShadow: "0 0 5px rgba(83,48,192,0.7)" }} />
-          transporte · pallet
-        </div>
-        {/* Top-left stacked pallet boxes accent */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1">
-          <div className="flex gap-1">
-            <div className="w-5 h-4 rounded-sm" style={{ background: "#C5B9F5" }} />
-            <div className="w-5 h-4 rounded-sm" style={{ background: "#683BED" }} />
-          </div>
-          <div className="flex gap-1">
-            <div className="w-5 h-4 rounded-sm" style={{ background: "#5330C0" }} />
-            <div className="w-5 h-4 rounded-sm" style={{ background: "#C5B9F5" }} />
-          </div>
-        </div>
-        {/* Hero icon */}
-        <div className="absolute inset-0 grid place-items-center">
-          <div className="grid place-items-center w-24 h-24 rounded-2xl"
-               style={{ background: "white", border: "1.5px solid #C5B9F5", boxShadow: "0 18px 36px -16px rgba(68,39,156,0.25)" }}>
-            <Icon name="forklift" size={56} strokeWidth={1.4} style={{ color: "#44279C" }} />
-          </div>
-        </div>
-        {/* Bottom floor line */}
-        <div className="absolute bottom-0 inset-x-0 h-1.5" style={{ background: "#44279C" }} />
-      </div>
-    );
-  }
+      <svg viewBox="0 0 300 180" className="absolute inset-0 w-full h-full">
+        {/* shelves */}
+        {[0, 1, 2].map((r) =>
+        <g key={r}>
+            <rect x={20 + r * 90} y={30} width="62" height="120" fill="white" stroke="#C5B9F5" strokeWidth="1.5" />
+            {[0, 1, 2, 3].map((s) =>
+          <g key={s}>
+                <line x1={20 + r * 90} y1={30 + (s + 1) * 30} x2={82 + r * 90} y2={30 + (s + 1) * 30} stroke="#C5B9F5" />
+                <rect x={26 + r * 90} y={32 + s * 30} width="16" height="22" fill="#C5B9F5" rx="1" />
+                <rect x={48 + r * 90} y={32 + s * 30} width="20" height="22" fill="#5330C0" rx="1" />
+              </g>
+          )}
+          </g>
+        )}
+        {/* picker */}
+        <g transform="translate(150,140)">
+          <circle cx="0" cy="-12" r="6" fill="#44279C" />
+          <rect x="-7" y="-6" width="14" height="20" fill="#44279C" rx="2" />
+        </g>
+        <rect x="138" y="116" width="24" height="36" fill="none" stroke="#44279C" strokeWidth="1.5" strokeDasharray="3 3" />
+      </svg>);
 
+  }
   // assembly
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* Backdrop: faint dot grid */}
-      <div className="absolute inset-0 opacity-60" style={{
-        backgroundImage: "radial-gradient(rgba(83,48,192,0.16) 1px, transparent 1px)",
-        backgroundSize: "14px 14px",
-      }} />
-      {/* Top-right detection chip */}
-      <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[10px] font-mono shadow-md"
-           style={{ background: "white", border: "1.5px solid #5330C0", color: "#44279C" }}>
-        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5330C0", boxShadow: "0 0 5px rgba(83,48,192,0.7)" }} />
-        estação 03 · 28s
-      </div>
-      {/* Hero — meshing gears */}
-      <div className="absolute inset-0 grid place-items-center">
-        <div className="relative grid place-items-center w-24 h-24 rounded-2xl"
-             style={{ background: "white", border: "1.5px solid #C5B9F5", boxShadow: "0 18px 36px -16px rgba(68,39,156,0.25)" }}>
-          <Icon name="cog" size={52} strokeWidth={1.4} style={{ color: "#44279C" }} />
-          <div className="absolute -top-2 -right-2 w-9 h-9 rounded-full grid place-items-center"
-               style={{ background: "white", border: "1.5px solid #C5B9F5" }}>
-            <Icon name="cog" size={20} strokeWidth={1.6} style={{ color: "#5330C0" }} />
-          </div>
-        </div>
-      </div>
-      {/* Bottom: 4 small workstation indicators */}
-      <div className="absolute bottom-2 inset-x-0 flex items-end justify-center gap-3">
-        {[0,1,2,3].map((i) => (
-          <div key={i} className="flex flex-col items-center gap-1">
-            <div className="w-7 h-1.5 rounded-sm" style={{ background: i === 1 ? "#44279C" : "#C5B9F5" }} />
-            <div className="text-[8px] font-mono" style={{ color: "#6B7280" }}>0{i+1}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+    <svg viewBox="0 0 300 180" className="absolute inset-0 w-full h-full">
+      <rect x="0" y="100" width="300" height="14" fill="#44279C" opacity="0.85" />
+      {[0, 1, 2, 3].map((i) =>
+      <g key={i}>
+          <rect x={20 + i * 72} y={70} width="40" height="30" rx="3" fill="#5330C0" />
+          <circle cx={40 + i * 72} cy={50} r={8} fill="#44279C" />
+          <rect x={32 + i * 72} y={56} width="16" height="20" rx="2" fill="#44279C" />
+        </g>
+      )}
+      {/* arms */}
+      {[0, 1, 2, 3].map((i) =>
+      <g key={i} stroke="#44279C" strokeWidth="2" fill="none" transform={`translate(${40 + i * 72},30) rotate(${i % 2 * 40 - 20})`}>
+          <line x1="0" y1="0" x2="0" y2="20" />
+          <rect x="-5" y="20" width="10" height="6" fill="#44279C" />
+        </g>
+      )}
+      <rect x={20 + 72} y="62" width="40" height="42" rx="3" fill="none" stroke="#44279C" strokeWidth="1.5" strokeDasharray="3 3" />
+    </svg>);
+
 }
 window.UseCases = UseCases;
 
