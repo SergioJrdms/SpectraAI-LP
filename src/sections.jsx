@@ -1138,7 +1138,7 @@ function Footer() {
         <div className="mt-12 pt-6 border-t flex flex-col md:flex-row md:items-center md:justify-between gap-3"
         style={{ borderColor: "var(--kv-border)" }}>
           <div className="text-[12.5px]" style={{ color: "var(--kv-muted)" }}>
-            © 2026 SpectraAI Tecnologia Ltda · CNPJ 00.000.000/0001-00 · São Paulo, SP
+            © 2026 SpectraAI Tecnologia Ltda · Contagem, MG
           </div>
           <div className="flex items-center gap-4 text-[12.5px]" style={{ color: "var(--kv-muted)" }}>
             <a href="#" className="hover:opacity-80">Termos</a>
