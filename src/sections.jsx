@@ -799,74 +799,75 @@ window.UseCases = UseCases;
 // ─────────────────────────────────────────────────────────────────────────
 function FeaturedCase() {
   return (
-    <section className="kv-section">
-      <div className="mx-auto max-w-7xl px-5">
-        <div className="reveal relative rounded-3xl p-10 md:p-16 overflow-hidden border"
-        style={{
-          background: "linear-gradient(135deg, #5330C0 0%, #44279C 55%, #0B0612 100%)",
-          borderColor: "transparent",
-          color: "white"
-        }}>
-          {/* deco */}
-          <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full"
-          style={{ background: "radial-gradient(closest-side, rgba(83,48,192,0.55), transparent)" }} />
-          <div className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full"
-          style={{ background: "radial-gradient(closest-side, rgba(104,59,237,0.30), transparent)" }} />
-          <div className="absolute inset-0 opacity-[0.06]"
-          style={{ backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
+    // <section className="kv-section">
+    //   <div className="mx-auto max-w-7xl px-5">
+    //     <div className="reveal relative rounded-3xl p-10 md:p-16 overflow-hidden border"
+    //     style={{
+    //       background: "linear-gradient(135deg, #5330C0 0%, #44279C 55%, #0B0612 100%)",
+    //       borderColor: "transparent",
+    //       color: "white"
+    //     }}>
+    //       {/* deco */}
+    //       <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full"
+    //       style={{ background: "radial-gradient(closest-side, rgba(83,48,192,0.55), transparent)" }} />
+    //       <div className="absolute -bottom-32 -left-20 w-[380px] h-[380px] rounded-full"
+    //       style={{ background: "radial-gradient(closest-side, rgba(104,59,237,0.30), transparent)" }} />
+    //       <div className="absolute inset-0 opacity-[0.06]"
+    //       style={{ backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
 
-          <div className="relative grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-            <div className="md:col-span-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[12px] font-medium"
-              style={{ background: "rgba(255,255,255,0.10)", color: "#C5B9F5" }}>
-                <Icon name="quote" size={13} strokeWidth={2.2} />
-                Caso destaque · Empresa
-              </div>
-              <blockquote className="mt-6 font-display font-medium leading-[1.15] text-[28px] sm:text-[36px] md:text-[44px]"
-              style={{ letterSpacing: "-0.025em" }}>
-                <span style={{ color: "#C5B9F5" }}>“</span>
-                A SpectraAI começou a <span style={{ background: "linear-gradient(180deg, #C5B9F5, #5330C0)", WebkitBackgroundClip: "text", color: "rgb(181, 168, 221)" }}>aprender a nossa linha</span> — e a descrever o nosso processo melhor do que a gente conseguia documentar.
-                <span style={{ color: "#C5B9F5" }}>”</span>
-              </blockquote>
-              <div className="mt-8 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full grid place-items-center font-semibold"
-                style={{ background: "rgba(255,255,255,0.10)", color: "white" }}>
-                  DO
-                </div>
-                <div>
-                  <div className="font-medium text-[15px]">Diretor de Operações · piloto em andamento</div>
-                  <div className="text-[13px]" style={{ color: "#C5B9F5" }}>Empresa Piloto · Empresa</div>
-                </div>
-              </div>
-            </div>
-            <div className="md:col-span-4">
-              <div className="rounded-2xl p-6 border"
-              style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }}>
-                <div className="text-[10.5px] font-mono uppercase tracking-[0.16em] font-semibold mb-4" style={{ color: "#C5B9F5" }}>
-                  No piloto
-                </div>
-                <ul className="space-y-3.5">
-                  {[
-                  ["scan-search", "Vocabulário do processo mapeado pela IA"],
-                  ["eye", "Primeira visibilidade granular da linha"],
-                  ["trending-up", "Ganhos de produtividade identificados"],
-                  ["brain-circuit", "Conhecimento retido na plataforma"]].
-                  map(([ic, l], i) =>
-                  <li key={i} className="flex items-start gap-3 text-[14px]" style={{ color: "white" }}>
-                      <span className="mt-0.5 w-6 h-6 rounded-lg grid place-items-center shrink-0"
-                    style={{ background: "rgba(255,255,255,0.10)", color: "#C5B9F5" }}>
-                        <Icon name={ic} size={13} strokeWidth={2} />
-                      </span>
-                      <span className="leading-snug">{l}</span>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>);
+    //       <div className="relative grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+    //         <div className="md:col-span-8">
+    //           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[12px] font-medium"
+    //           style={{ background: "rgba(255,255,255,0.10)", color: "#C5B9F5" }}>
+    //             <Icon name="quote" size={13} strokeWidth={2.2} />
+    //             Caso destaque · Empresa
+    //           </div>
+    //           <blockquote className="mt-6 font-display font-medium leading-[1.15] text-[28px] sm:text-[36px] md:text-[44px]"
+    //           style={{ letterSpacing: "-0.025em" }}>
+    //             <span style={{ color: "#C5B9F5" }}>“</span>
+    //             A SpectraAI começou a <span style={{ background: "linear-gradient(180deg, #C5B9F5, #5330C0)", WebkitBackgroundClip: "text", color: "rgb(181, 168, 221)" }}>aprender a nossa linha</span> — e a descrever o nosso processo melhor do que a gente conseguia documentar.
+    //             <span style={{ color: "#C5B9F5" }}>”</span>
+    //           </blockquote>
+    //           <div className="mt-8 flex items-center gap-4">
+    //             <div className="w-12 h-12 rounded-full grid place-items-center font-semibold"
+    //             style={{ background: "rgba(255,255,255,0.10)", color: "white" }}>
+    //               DO
+    //             </div>
+    //             <div>
+    //               <div className="font-medium text-[15px]">Diretor de Operações · piloto em andamento</div>
+    //               <div className="text-[13px]" style={{ color: "#C5B9F5" }}>Empresa Piloto · Empresa</div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <div className="md:col-span-4">
+    //           <div className="rounded-2xl p-6 border"
+    //           style={{ background: "rgba(255,255,255,0.06)", borderColor: "rgba(255,255,255,0.12)" }}>
+    //             <div className="text-[10.5px] font-mono uppercase tracking-[0.16em] font-semibold mb-4" style={{ color: "#C5B9F5" }}>
+    //               No piloto
+    //             </div>
+    //             <ul className="space-y-3.5">
+    //               {[
+    //               ["scan-search", "Vocabulário do processo mapeado pela IA"],
+    //               ["eye", "Primeira visibilidade granular da linha"],
+    //               ["trending-up", "Ganhos de produtividade identificados"],
+    //               ["brain-circuit", "Conhecimento retido na plataforma"]].
+    //               map(([ic, l], i) =>
+    //               <li key={i} className="flex items-start gap-3 text-[14px]" style={{ color: "white" }}>
+    //                   <span className="mt-0.5 w-6 h-6 rounded-lg grid place-items-center shrink-0"
+    //                 style={{ background: "rgba(255,255,255,0.10)", color: "#C5B9F5" }}>
+    //                     <Icon name={ic} size={13} strokeWidth={2} />
+    //                   </span>
+    //                   <span className="leading-snug">{l}</span>
+    //                 </li>
+    //               )}
+    //             </ul>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
+    <section></section>);
 
 }
 window.FeaturedCase = FeaturedCase;
@@ -902,92 +903,94 @@ function CtaForm() {
   }
 
   return (
-    <section id="contato" className="kv-section" style={{ background: "var(--kv-soft)" }}>
-      <div className="mx-auto max-w-5xl px-5">
-        <div className="reveal rounded-3xl border p-8 md:p-14"
-        style={{
-          background: "var(--kv-surface)",
-          borderColor: "var(--kv-border)",
-          boxShadow: "0 1px 0 rgba(68,39,156,0.04), 0 30px 60px -30px rgba(68,39,156,0.20)"
-        }}>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
-            <div className="md:col-span-5">
-              <Eyebrow icon="rocket">Pronto pra ver a operação?</Eyebrow>
-              <h2 className="mt-5 font-display font-semibold text-[34px] md:text-[42px] leading-[1.05]"
-              style={{ color: "var(--kv-ink)" }}>
-                Demonstração de <span style={{ color: "var(--kv-purple-700)" }}>30 minutos</span>.
-              </h2>
-              <p className="mt-4 text-[16px] leading-relaxed" style={{ color: "var(--kv-muted)" }}>
-                Mostramos a plataforma aprendendo uma operação real — descobrindo comportamentos, fazendo perguntas e gerando sugestões — e conversamos sobre a sua. Você decide se faz sentido um piloto.
-                Sem proposta empurrada, sem deck de 80 slides.
-              </p>
-              <ul className="mt-6 space-y-3 text-[14.5px]" style={{ color: "var(--kv-text)" }}>
-                {[
-                "Conversa direta com quem implementa, não com vendedor.",
-                "Em até 7 dias na sua agenda.",
-                "NDA fácil se for o caso — você manda o seu."].
-                map((t, i) =>
-                <li key={i} className="flex items-start gap-3">
-                    <span className="mt-0.5 w-5 h-5 rounded-full grid place-items-center"
-                  style={{ background: "var(--kv-purple-50)", color: "var(--kv-purple-700)" }}>
-                      <Icon name="check" size={12} strokeWidth={3} />
-                    </span>
-                    {t}
-                  </li>
-                )}
-              </ul>
-            </div>
+    // <section id="contato" className="kv-section" style={{ background: "var(--kv-soft)" }}>
+    //   <div className="mx-auto max-w-5xl px-5">
+    //     <div className="reveal rounded-3xl border p-8 md:p-14"
+    //     style={{
+    //       background: "var(--kv-surface)",
+    //       borderColor: "var(--kv-border)",
+    //       boxShadow: "0 1px 0 rgba(68,39,156,0.04), 0 30px 60px -30px rgba(68,39,156,0.20)"
+    //     }}>
+    //       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+    //         <div className="md:col-span-5">
+    //           <Eyebrow icon="rocket">Pronto pra ver a operação?</Eyebrow>
+    //           <h2 className="mt-5 font-display font-semibold text-[34px] md:text-[42px] leading-[1.05]"
+    //           style={{ color: "var(--kv-ink)" }}>
+    //             Demonstração de <span style={{ color: "var(--kv-purple-700)" }}>30 minutos</span>.
+    //           </h2>
+    //           <p className="mt-4 text-[16px] leading-relaxed" style={{ color: "var(--kv-muted)" }}>
+    //             Mostramos a plataforma aprendendo uma operação real — descobrindo comportamentos, fazendo perguntas e gerando sugestões — e conversamos sobre a sua. Você decide se faz sentido um piloto.
+    //             Sem proposta empurrada, sem deck de 80 slides.
+    //           </p>
+    //           <ul className="mt-6 space-y-3 text-[14.5px]" style={{ color: "var(--kv-text)" }}>
+    //             {[
+    //             "Conversa direta com quem implementa, não com vendedor.",
+    //             "Em até 7 dias na sua agenda.",
+    //             "NDA fácil se for o caso — você manda o seu."].
+    //             map((t, i) =>
+    //             <li key={i} className="flex items-start gap-3">
+    //                 <span className="mt-0.5 w-5 h-5 rounded-full grid place-items-center"
+    //               style={{ background: "var(--kv-purple-50)", color: "var(--kv-purple-700)" }}>
+    //                   <Icon name="check" size={12} strokeWidth={3} />
+    //                 </span>
+    //                 {t}
+    //               </li>
+    //             )}
+    //           </ul>
+    //         </div>
 
-            <div className="md:col-span-7">
-              {submitted ?
-              <div className="rounded-2xl border p-8 text-center"
-              style={{ background: "var(--kv-purple-50)", borderColor: "var(--kv-border)" }}>
-                  <div className="w-14 h-14 rounded-full grid place-items-center mx-auto"
-                style={{ background: "var(--kv-purple-700)", color: "white" }}>
-                    <Icon name="check" size={26} strokeWidth={2.5} />
-                  </div>
-                  <h3 className="mt-5 font-display font-semibold text-[24px]" style={{ color: "var(--kv-ink)" }}>
-                    Recebido, {form.name.split(" ")[0]}.
-                  </h3>
-                  <p className="mt-2 text-[15px]" style={{ color: "var(--kv-muted)" }}>
-                    A gente responde em até 24h em <b>{form.email}</b>.<br />
-                    Se for urgente, chama no WhatsApp aqui em baixo.
-                  </p>
-                  <button onClick={() => {setSubmitted(false);setForm({ name: "", email: "", company: "", phone: "" });}}
-                className="mt-6 text-[13px] font-medium link-u" style={{ color: "var(--kv-purple-700)" }}>
-                    Enviar outro pedido
-                  </button>
-                </div> :
+    //         <div className="md:col-span-7">
+    //           {submitted ?
+    //           <div className="rounded-2xl border p-8 text-center"
+    //           style={{ background: "var(--kv-purple-50)", borderColor: "var(--kv-border)" }}>
+    //               <div className="w-14 h-14 rounded-full grid place-items-center mx-auto"
+    //             style={{ background: "var(--kv-purple-700)", color: "white" }}>
+    //                 <Icon name="check" size={26} strokeWidth={2.5} />
+    //               </div>
+    //               <h3 className="mt-5 font-display font-semibold text-[24px]" style={{ color: "var(--kv-ink)" }}>
+    //                 Recebido, {form.name.split(" ")[0]}.
+    //               </h3>
+    //               <p className="mt-2 text-[15px]" style={{ color: "var(--kv-muted)" }}>
+    //                 A gente responde em até 24h em <b>{form.email}</b>.<br />
+    //                 Se for urgente, chama no WhatsApp aqui em baixo.
+    //               </p>
+    //               <button onClick={() => {setSubmitted(false);setForm({ name: "", email: "", company: "", phone: "" });}}
+    //             className="mt-6 text-[13px] font-medium link-u" style={{ color: "var(--kv-purple-700)" }}>
+    //                 Enviar outro pedido
+    //               </button>
+    //             </div> :
 
-              <form onSubmit={onSubmit} noValidate className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <Field label="Seu nome" name="name" value={form.name} error={errors.name}
-                onChange={(v) => setForm({ ...form, name: v })} placeholder="Como te chamamos?" />
-                  <Field label="Email corporativo" name="email" type="email" value={form.email} error={errors.email}
-                onChange={(v) => setForm({ ...form, email: v })} placeholder="voce@empresa.com.br" />
-                  <Field label="Empresa" name="company" value={form.company} error={errors.company}
-                onChange={(v) => setForm({ ...form, company: v })} placeholder="Razão social ou marca" />
-                  <Field label="WhatsApp (opcional)" name="phone" value={form.phone} error={errors.phone}
-                onChange={(v) => setForm({ ...form, phone: v })} placeholder="(11) 9 9999 9999" />
-                  <div className="sm:col-span-2 mt-2 flex flex-col sm:flex-row sm:items-center gap-3">
-                    <button type="submit" disabled={loading}
-                  className="cta-primary text-white font-semibold text-[15px] px-6 py-3.5 rounded-xl inline-flex items-center justify-center gap-2 disabled:opacity-70">
-                      {loading ?
-                    <><span className="w-3 h-3 rounded-full bg-white/80 animate-pulse" /> Enviando…</> :
+    //           <form onSubmit={onSubmit} noValidate className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+    //               <Field label="Seu nome" name="name" value={form.name} error={errors.name}
+    //             onChange={(v) => setForm({ ...form, name: v })} placeholder="Como te chamamos?" />
+    //               <Field label="Email corporativo" name="email" type="email" value={form.email} error={errors.email}
+    //             onChange={(v) => setForm({ ...form, email: v })} placeholder="voce@empresa.com.br" />
+    //               <Field label="Empresa" name="company" value={form.company} error={errors.company}
+    //             onChange={(v) => setForm({ ...form, company: v })} placeholder="Razão social ou marca" />
+    //               <Field label="WhatsApp (opcional)" name="phone" value={form.phone} error={errors.phone}
+    //             onChange={(v) => setForm({ ...form, phone: v })} placeholder="(11) 9 9999 9999" />
+    //               <div className="sm:col-span-2 mt-2 flex flex-col sm:flex-row sm:items-center gap-3">
+    //                 <button type="submit" disabled={loading}
+    //               className="cta-primary text-white font-semibold text-[15px] px-6 py-3.5 rounded-xl inline-flex items-center justify-center gap-2 disabled:opacity-70">
+    //                   {loading ?
+    //                 <><span className="w-3 h-3 rounded-full bg-white/80 animate-pulse" /> Enviando…</> :
 
-                    <>Agendar demonstração <Icon name="arrow-right" size={16} strokeWidth={2.4} /></>
-                    }
-                    </button>
-                    <p className="text-[12px]" style={{ color: "var(--kv-muted)" }}>
-                      Levamos LGPD a sério. Seus dados ficam só com a gente.
-                    </p>
-                  </div>
-                </form>
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>);
+    //                 <>Agendar demonstração <Icon name="arrow-right" size={16} strokeWidth={2.4} /></>
+    //                 }
+    //                 </button>
+    //                 <p className="text-[12px]" style={{ color: "var(--kv-muted)" }}>
+    //                   Levamos LGPD a sério. Seus dados ficam só com a gente.
+    //                 </p>
+    //               </div>
+    //             </form>
+    //           }
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
+    <section></section>
+  );
 
 }
 
