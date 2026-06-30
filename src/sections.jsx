@@ -494,7 +494,6 @@ function StepVisual({ active }) {
               <text fontSize="9.5" fill="#374151">{s.t}</text>
               <rect y="8" width="150" height="7" rx="3.5" fill="#EFEBFC" />
               <rect y="8" width={s.w * 1.5} height="7" rx="3.5" fill={i === 0 ? "#44279C" : "#C5B9F5"} />
-              <text x="154" y="15" fontSize="8" fontFamily="JetBrains Mono" fill="#5330C0">impacto</text>
             </g>
           )}
           {/* Evolution curve */}
