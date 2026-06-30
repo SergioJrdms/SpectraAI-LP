@@ -447,6 +447,10 @@ function StepVisual({ active }) {
           <rect x="24" y="46" width="172" height="64" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
           <text x="38" y="68" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
           <text x="38" y="82" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
+
+          <rect x="44" y="86" width="172" height="64" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="68" y="128" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
+          <text x="68" y="162" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
           {/* confirm / correct buttons */}
           <g>
             <rect x="38" y="90" width="54" height="15" rx="7.5" fill="#dcfce7" />
