@@ -440,43 +440,50 @@ function StepVisual({ active }) {
           <text x="290" y="56" textAnchor="middle" fontSize="9" fontFamily="JetBrains Mono" fill="#6B7280">vocabulário do seu processo</text>
         </svg>
       </div>
-      {/* 3. Validation loop + AI question */}
+     {/* 3. Validation loop + AI question */}
       <div className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${active === 2 ? "opacity-100" : "opacity-0"}`}>
-        <svg viewBox="0 0 400 240" className="w-[84%] h-auto">
+        <svg viewBox="0 0 400 240" className="w-[88%] h-auto">
           {/* behavior to validate */}
-          <rect x="24" y="46" width="172" height="64" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="38" y="68" fontSize="9.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
-          <text x="38" y="82" fontSize="9" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
+          <rect x="14" y="78" width="180" height="84" rx="10" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="30" y="104" fontSize="10.5" fill="#374151">Classifiquei como <tspan fontWeight="700" fill="#44279C">espera</tspan></text>
+          <text x="30" y="121" fontSize="9.5" fill="#9CA3AF" fontStyle="italic">“parado, aguardando ciclo”</text>
           {/* confirm / correct buttons */}
           <g>
-            <rect x="38" y="90" width="54" height="15" rx="7.5" fill="#dcfce7" />
-            <text x="65" y="100" textAnchor="middle" fontSize="8" fontWeight="700" fill="#16a34a">✓ confirmar</text>
-            <rect x="98" y="90" width="48" height="15" rx="7.5" fill="white" stroke="#C5B9F5" />
-            <text x="122" y="100" textAnchor="middle" fontSize="8" fill="#6B7280">✎ corrigir</text>
+            <rect x="30" y="132" width="60" height="18" rx="9" fill="#dcfce7" />
+            <text x="60" y="144.5" textAnchor="middle" fontSize="9" fontWeight="700" fill="#16a34a">✓ confirmar</text>
+            <rect x="96" y="132" width="54" height="18" rx="9" fill="white" stroke="#C5B9F5" />
+            <text x="123" y="144.5" textAnchor="middle" fontSize="9" fill="#6B7280">✎ corrigir</text>
           </g>
-          {/* loop arrows between human and AI */}
-          <g>
-            <path d="M200 78 C 224 78, 224 60, 248 60" stroke="#5330C0" strokeWidth="1.5" fill="none" strokeDasharray="3 4">
-              <animate attributeName="stroke-dashoffset" values="14;0" dur="1.1s" repeatCount="indefinite" />
-            </path>
-            <path d="M248 150 C 224 150, 224 168, 200 168" stroke="#5330C0" strokeWidth="1.5" fill="none" strokeDasharray="3 4">
-              <animate attributeName="stroke-dashoffset" values="0;14" dur="1.1s" repeatCount="indefinite" />
-            </path>
-          </g>
+
+          {/* connector: validation card -> AI question (top) */}
+          <path d="M194 100 C 216 100, 216 70, 238 70" stroke="#5330C0" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeDasharray="3 5">
+            <animate attributeName="stroke-dashoffset" values="16;0" dur="1.1s" repeatCount="indefinite" />
+          </path>
+          <circle cx="194" cy="100" r="3" fill="#5330C0" />
+          <circle cx="238" cy="70" r="3" fill="#5330C0" />
+
+          {/* connector: AI confidence (bottom) -> back to validation card */}
+          <path d="M238 178 C 216 178, 216 150, 194 150" stroke="#5330C0" strokeWidth="1.75" fill="none" strokeLinecap="round" strokeDasharray="3 5">
+            <animate attributeName="stroke-dashoffset" values="0;16" dur="1.1s" repeatCount="indefinite" />
+          </path>
+          <circle cx="238" cy="178" r="3" fill="#5330C0" />
+          <circle cx="194" cy="150" r="3" fill="#5330C0" />
+
           {/* AI question bubble */}
-          <rect x="248" y="40" width="128" height="78" rx="9" fill="#EFEBFC" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="262" y="60" fontSize="8" fontWeight="700" fill="#44279C" letterSpacing="0.5">PERGUNTA DA IA</text>
-          <text x="262" y="76" fontSize="9" fill="#374151">Essa pausa antes da</text>
-          <text x="262" y="89" fontSize="9" fill="#374151">prensa é padrão do</text>
-          <text x="262" y="102" fontSize="9" fill="#374151">turno ou exceção?</text>
+          <rect x="238" y="34" width="148" height="86" rx="10" fill="#EFEBFC" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="254" y="55" fontSize="9" fontWeight="700" fill="#44279C" letterSpacing="0.5">PERGUNTA DA IA</text>
+          <text x="254" y="73" fontSize="10" fill="#374151">Essa pausa antes da</text>
+          <text x="254" y="87" fontSize="10" fill="#374151">prensa é padrão do</text>
+          <text x="254" y="101" fontSize="10" fill="#374151">turno ou exceção?</text>
+
           {/* confidence growing after learning */}
-          <rect x="248" y="132" width="128" height="54" rx="9" fill="white" stroke="#C5B9F5" strokeWidth="2" />
-          <text x="262" y="150" fontSize="8.5" fill="#6B7280">confiança do modelo</text>
-          <rect x="262" y="158" width="100" height="8" rx="4" fill="#EFEBFC" />
-          <rect x="262" y="158" width="6" height="8" rx="4" fill="#44279C">
-            <animate attributeName="width" values="6;94" dur="1.6s" fill="freeze" />
+          <rect x="238" y="138" width="148" height="58" rx="10" fill="white" stroke="#C5B9F5" strokeWidth="2" />
+          <text x="254" y="158" fontSize="9.5" fill="#6B7280">confiança do modelo</text>
+          <rect x="254" y="167" width="116" height="9" rx="4.5" fill="#EFEBFC" />
+          <rect x="254" y="167" width="8" height="9" rx="4.5" fill="#44279C">
+            <animate attributeName="width" values="8;108" dur="1.6s" fill="freeze" />
           </rect>
-          <text x="262" y="180" fontSize="8" fontFamily="JetBrains Mono" fill="#16a34a">71% → 94% ao aprender</text>
+          <text x="254" y="190" fontSize="9" fontFamily="JetBrains Mono" fill="#16a34a">71% → 94% ao aprender</text>
         </svg>
       </div>
       {/* 4. Lean suggestions + evolution over time */}
